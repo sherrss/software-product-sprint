@@ -14,5 +14,17 @@
     border-width: thin;
     border-color: lightgray;
     padding: 15px;
+    background-color: #E1F2F7;
+    border-radius: 25px;
 }
-  
+ 
+.pic {
+    height: 450px;
+    overflow: auto;
+}
+
+.pics {
+    width: 650px;
+    height: 450px;
+    object-fit: cover;
+}
