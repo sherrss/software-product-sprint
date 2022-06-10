@@ -18,7 +18,10 @@ public class FormHandlerServlet extends HttpServlet {
     // Print the value so you can see it in the server logs.
     System.out.println("You submitted: " + textValue);
 
+    //Redirect user back to portfolio page
+    response.sendRedirect("http://sliu-sps-summer22.appspot.com ");
+
     // Write the value to the response so the user can see it.
-    response.getWriter().println("You submitted: " + textValue);
+    // response.getWriter().println("You submitted: " + textValue);
   }
 }
