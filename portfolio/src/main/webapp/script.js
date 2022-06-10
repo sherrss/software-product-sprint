@@ -28,9 +28,13 @@ function addRandomGreeting() {
 }
 
 async function showServerSample() {
+    //Send request to /sample Servlet
     const responseFromServer = await fetch('/sample');
-    const textFromResponse = await responseFromServer.text();
+
+    const obj = await responseFromServer.json();
+
+    const randomObj = obj[Math.floor(Math.random() * obj.length)];
   
     const sampleContainer = document.getElementById('sample-container');
-    sampleContainer.innerText = textFromResponse;
+    sampleContainer.innerText = randomObj;
   }
