@@ -26,3 +26,15 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+async function showServerSample() {
+    //Send request to /sample Servlet
+    const responseFromServer = await fetch('/sample');
+
+    const obj = await responseFromServer.json();
+
+    const randomObj = obj[Math.floor(Math.random() * obj.length)];
+  
+    const sampleContainer = document.getElementById('sample-container');
+    sampleContainer.innerText = randomObj;
+  }
