@@ -34,10 +34,12 @@ public class FormHandlerServlet extends HttpServlet {
 
     // Create entity with properties of text value and timestamp.
     FullEntity taskEntity =
-    Entity.newBuilder(keyFactory.newKey())
-        .set("value", textValue)
-        .set("timestamp", timestamp)
-        .build();
+        Entity.newBuilder(keyFactory.newKey())
+            .set("value", textValue)
+            .set("timestamp", timestamp)
+            .build();
+
+    datastore.put(taskEntity);
 
     //Redirect user back to portfolio page
     response.sendRedirect("http://sliu-sps-summer22.appspot.com ");
