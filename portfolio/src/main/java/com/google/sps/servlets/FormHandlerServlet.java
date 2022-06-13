@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.KeyFactory;
 
 @WebServlet("/form-handler")
 public class FormHandlerServlet extends HttpServlet {
@@ -23,6 +24,9 @@ public class FormHandlerServlet extends HttpServlet {
 
     // Create instance of Datastore 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+
+    // Create key with a king of "Task"
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
 
     //Redirect user back to portfolio page
     response.sendRedirect("http://sliu-sps-summer22.appspot.com ");
