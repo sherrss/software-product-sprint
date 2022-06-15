@@ -1,6 +1,9 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,9 @@ import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery.OrderBy;
+import com.google.gson.Gson;
+import com.google.sps.data.Suggestion;
 
 @WebServlet("/list-form")
 public class ListFormServlet extends HttpServlet {
@@ -29,23 +35,27 @@ public class ListFormServlet extends HttpServlet {
         Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.desc("timestamp")).build();
     QueryResults<Entity> results = datastore.run(query);
 
-    List<Task> tasks = new ArrayList<>();
+    //List of Suggestion instances
+    List<Suggestion> suggests = new ArrayList<>();
+
     //Loop through entities
     while (results.hasNext()) {
       Entity entity = results.next();
 
+      //Get element from entity
       long id = entity.getKey().getId();
       String textValue = entity.getString("value");
       long timestamp = entity.getLong("timestamp");
 
-      Task task = new Task(id, title, timestamp);
-      tasks.add(task);
+      //Create Suggestion instance and add to list of suggestions
+      Suggestion suggestion = new Suggestion(id, textValue, timestamp);
+      suggests.add(suggestion);
     }
 
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(tasks));
+    response.getWriter().println(gson.toJson(suggests));
     
   }
 }
