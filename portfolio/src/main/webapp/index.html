@@ -10,6 +10,8 @@
     <div id="content">
       <h1>Hello, I'm Sherry.</h1>
       <p style="font-style: italic;">- Nice to meet you! -</p>
+
+      <!-- about paragraphs -->
       <h2>About </h2>
       <div class="about">
       <p>My name is Sherry Liu and I'm a sophomore studying Computer Science at Drexel Univeristy.</p>
@@ -21,21 +23,46 @@
         Since summer is around the corner, my goal is to explore new places and enjoy the weather. My hidden talent is that I am good at building/assembling things, 
         so I would like to think I can survive perfectly fine in a deserted island.</p>
       </div>
+
+    <!-- scroll-down picture gallery -->
     <h2>Recent Pictures </h2>
     <div class="pic" style="width: 650px; height: 450px;">
       <img class="pics" src="/images/drexel.JPG" />
       <img class="pics" src="/images/boba.JPG" />
       <img class="pics" src="/images/scene.jpg" />
+
+    <!-- personal profile links -->
     </div>
       <h2>My Profiles  </h2> 
       <div class="link">
       <p><a href="https://www.linkedin.com/in/sherryliu02/">LinkedIn</a></p>
       <p><a href="https://github.com/sherrss">GitHub</a></p>
     </div>
+
+    <!-- send POST requests -->
+    <form action="/form-handler" method="POST">
+        <h4>Leave a suggestion!</h4>
+        <textarea name="text-input"></textarea>
+        <br/>
+        <input type="submit" />
+      </form>
+
+      <!-- hello html servlet -->
       <p>Click <a href="/hello">here</a> to see content created by server code.</p>
+
+      <!-- random message about me button -->
       <p>Click here to get a random fact about me:</p>
       <button onclick="addRandomGreeting()">Click Me</button>
       <div id="greeting-container"></div>
+
+      <!-- random quote button -->
+      <p>Click this button to get a random movie quote:</p>
+    <button onclick="showServerSample();">
+      Get Quote
+    </button>
+    <p id="sample-container"></p>
+    <p>Click <a href="/sample">here</a> to see the list of movie quotes.</p>
+  
     </div>
   </body>
 </html>
