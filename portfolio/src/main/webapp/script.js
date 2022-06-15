@@ -37,4 +37,13 @@ async function showServerSample() {
   
     const sampleContainer = document.getElementById('sample-container');
     sampleContainer.innerText = randomObj;
+}
+
+function loadTasks() {
+    fetch('/list-tasks').then(response => response.json()).then((tasks) => {
+      const taskListElement = document.getElementById('task-list');
+      tasks.forEach((task) => {
+        taskListElement.appendChild(createTaskElement(task));
+      })
+    });
   }
