@@ -26,3 +26,41 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+async function showServerSample() {
+    //Send request to Sample Servlet
+    const responseFromServer = await fetch('/sample');
+
+    const obj = await responseFromServer.json();
+
+    const randomObj = obj[Math.floor(Math.random() * obj.length)];
+  
+    const sampleContainer = document.getElementById('sample-container');
+    sampleContainer.innerText = randomObj;
+}
+
+function loadSuggestions() {
+    //Get JSON data 
+    fetch('/list-form')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            appendData(data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function appendData(data) {
+    //Link to div element to display suggestions
+    var suggestPage = document.getElementById("suggestions");
+
+    //Parse JSON data and display as HTML
+    for (var i = 0; i < data.length; i++) {
+      var div = document.createElement("div");
+      div.innerHTML = 'Suggestion: ' + data[i].value;
+      suggestPage.appendChild(div);
+    }
+  }
