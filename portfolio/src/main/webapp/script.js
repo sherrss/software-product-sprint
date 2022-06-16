@@ -28,7 +28,7 @@ function addRandomGreeting() {
 }
 
 async function showServerSample() {
-    //Send request to /sample Servlet
+    //Send request to Sample Servlet
     const responseFromServer = await fetch('/sample');
 
     const obj = await responseFromServer.json();
@@ -39,11 +39,28 @@ async function showServerSample() {
     sampleContainer.innerText = randomObj;
 }
 
-function loadTasks() {
-    fetch('/list-tasks').then(response => response.json()).then((tasks) => {
-      const taskListElement = document.getElementById('task-list');
-      tasks.forEach((task) => {
-        taskListElement.appendChild(createTaskElement(task));
-      })
-    });
+function loadSuggestions() {
+    //Get JSON data 
+    fetch('/list-form')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            appendData(data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function appendData(data) {
+    //Link to div element to display suggestions
+    var suggestPage = document.getElementById("suggestions");
+
+    //Parse JSON data and display as HTML
+    for (var i = 0; i < data.length; i++) {
+      var div = document.createElement("div");
+      div.innerHTML = 'Suggestion: ' + data[i].value;
+      suggestPage.appendChild(div);
+    }
   }
