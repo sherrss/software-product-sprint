@@ -10,9 +10,10 @@ import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
-import com.google.cloud.datastore.IncompleteKey;
-import com.google.cloud.datastore.Key;
 import com.google.cloud.datastore.KeyFactory;
+
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 @WebServlet("/form-handler")
 public class FormHandlerServlet extends HttpServlet {
@@ -43,7 +44,7 @@ public class FormHandlerServlet extends HttpServlet {
     datastore.put(taskEntity);
 
     //Redirect user back to portfolio page
-    response.sendRedirect("/index.html");
+    response.sendRedirect("http://sliu-sps-summer22.appspot.com");
 
   }
 }
