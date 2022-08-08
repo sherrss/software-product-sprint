@@ -1,3 +1,28 @@
+.navbar {
+    background-color: aliceblue;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+  
+.navbar a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+.navbar a:hover {
+  color: black;
+}
+  
+.navbar-right {
+  float: right;
+}
+  
 #content {
   margin-left: auto;
   margin-right: auto;
